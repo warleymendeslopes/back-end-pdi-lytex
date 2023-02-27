@@ -14,10 +14,11 @@ export class UsersController {
   ) {
     return this.usersService.create(createuser);
   }
+
   @Get()
   @HttpCode(HttpStatus.OK)
   findAll() {
     return this.usersService.findAll();
   }
-  
 }
+
