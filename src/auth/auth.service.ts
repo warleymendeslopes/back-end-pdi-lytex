@@ -24,6 +24,9 @@ export class AuthService {
     }
   
     async Login(loginuser){
+
+
+      console.log(loginuser)
           //verrifica se o email esta cadastrado 
           const userExists = await this.checkExists(
             loginuser.email,
@@ -34,12 +37,25 @@ export class AuthService {
             const payload = { username: userExists.name, sub: userExists._id };
             return {
               access_token: this.jwtService.sign(payload),
+              _id: userExists._id,
             };
             
   
   
-            return isMatch
+           
           }else throw new ConflictException('Este e-mail nao esta cadastrado');
+    }
+
+    async Register(registeruser){
+      const userExists = await this.checkExists(
+        registeruser.email,
+      );
+      if (userExists) throw new ConflictException('Este e-mail ja esta cadastrado');
+      const user = new this.UserModel(registeruser);
+      user.senha = await bcrypt.hash(registeruser.senha, 10);
+      user.tipo = registeruser.tipo;
+      await user.save();
+      return user;
     }
 
 
