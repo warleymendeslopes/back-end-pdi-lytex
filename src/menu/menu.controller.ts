@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus, Request } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+  HttpStatus,
+  Request,
+} from '@nestjs/common';
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
@@ -10,8 +21,9 @@ export class MenuController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body(new JoiValidationPipe(CreateMenuDto)) createmenu,
-  @Request() {},
+  create(
+    @Body(new JoiValidationPipe(CreateMenuDto)) createmenu,
+    @Request() {},
   ) {
     return this.menuService.create(createmenu);
   }
