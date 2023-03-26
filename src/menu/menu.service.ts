@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { UpdateMenuDto } from './dto/update-menu.dto';
 import { InjectModel } from "@nestjs/mongoose";
 import { Menu, MenuDocument } from "./schema/menu.schema";
@@ -31,7 +31,8 @@ export class MenuService {
     return `This action updates a #${id} menu`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} menu`;
+  remove(id) {
+    console.log(id)
+    return this.MenuModel.findByIdAndDelete(id);
   }
 }
