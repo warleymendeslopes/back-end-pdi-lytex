@@ -32,6 +32,7 @@
     "joi-translation-pt-br": "^0.0.6",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
+    "qrcode": "^1.5.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
   },
