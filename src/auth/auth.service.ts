@@ -34,7 +34,7 @@ export class AuthService {
           if (userExists){
             const isMatch = await bcrypt.compare(loginuser.senha, userExists.senha);
             if(!isMatch) throw new UnauthorizedException();
-            const payload = { username: userExists.name, sub: userExists._id };
+            const payload = { data: userExists };
             return {
               access_token: this.jwtService.sign(payload),
               _id: userExists._id,
