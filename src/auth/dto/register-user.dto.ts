@@ -5,5 +5,6 @@ const RegisterUser = Joi.object({
   telefone: Joi.string() .required(),
   nome: Joi.string() .required(),
   tipo: Joi.string() .required(),
+  isAdmin: Joi.boolean() .required(),
 })
 export { RegisterUser };
